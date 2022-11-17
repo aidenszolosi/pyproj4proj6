@@ -53,7 +53,7 @@ else:
     bmiUnderweight = False
 
 
-if float(bmiNumber) >= 30:
+if float(bmiNumber) >= float(30):
     bmiObese = True
 else:
     bmiObese = False
@@ -61,6 +61,8 @@ else:
 ##
 ylist = []
 
+
+#BUG: #1 tuple appends 25 repeatedly instead of 25, then 26, 27 and so on 
 for y in range(25, 30):
     y = round(x, 1)
     ylist.insert(0, str(x) + str('.1'))
@@ -73,12 +75,13 @@ for y in range(25, 30):
     ylist.insert(7, str(x) + str('.8'))
     ylist.insert(8, str(x) + str('.9'))
     ylist.insert(0, str(x) + str('.0'))
-    if bmiNumber in ylist: 
+if bmiNumber in ylist: 
         bmiOverweight = True
 
-    if bmiNumber not in ylist:
+if bmiNumber not in ylist:
         bmiOverweight = False
 
+print(ylist)
 if bmiUnderweight:
     print('BMI value indicates underweight')
 elif bmiNormal:
