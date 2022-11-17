@@ -53,7 +53,7 @@ else:
     bmiUnderweight = False
 
 
-if float(bmiNumber) >= float(30):
+if float(bmiNumber) >= 30:
     bmiObese = True
 else:
     bmiObese = False
@@ -72,7 +72,7 @@ for y in range(25, 30):
     ylist.insert(6, str(x) + str('.7'))
     ylist.insert(7, str(x) + str('.8'))
     ylist.insert(8, str(x) + str('.9'))
-    ylist.insert(0,str(x))
+    ylist.insert(0, str(x) + str('.0'))
     if bmiNumber in ylist: 
         bmiOverweight = True
 
@@ -86,4 +86,4 @@ elif bmiNormal:
 elif bmiOverweight:
     print('BMI indicates overweight')
 elif bmiObese:
-    print('BMI value indicates overweight')
+    print('BMI value indicates obesity')
