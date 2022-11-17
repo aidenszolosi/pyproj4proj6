@@ -1,11 +1,12 @@
 ####pyth proj testing
 
-
+print('-' * 50)
+print('Inputs:')
 def lbtokg(lb):
     return float(lb) * 0.45359237
 
 
-lbInput = input('\nWeight (pounds): ')
+lbInput = input('  Weight (pounds): ')
 weightKG = lbtokg(lbInput)
 weightKG = round(weightKG, 2)
 
@@ -13,8 +14,22 @@ weightKG = round(weightKG, 2)
 def inchesToMeters(inches):
     return float(inches) * 0.0254 
 
-inch = input('\nHeight (inches): ')
+inch = input('  Height (inches): ')
 heightM = inchesToMeters(inch)
+
+ageIn = input('  Current age (years): ')
+try:
+    ageIn = int(ageIn)
+except ValueError: 
+    print('This was not a valid integer value.')
+    exit() 
+
+rhrIn = input('  Resting heart rate (BPM): ')
+try:
+    rhrIn = int(rhrIn)
+except ValueError: 
+    print('This was not a valid integer value.')
+    exit() 
 
 
 def bmi(weight, height):
@@ -23,7 +38,8 @@ def bmi(weight, height):
 bmiNumber = bmi(weightKG, heightM)
 bmiNumber = round(bmiNumber, 1)
 bmiNumber = str(bmiNumber)
-print('BMI INDEX VALUE IS: ' + bmiNumber)
+print('-' * 50)
+print('BMI VALUE: ' + bmiNumber)
 
 #this fixes it not recognizing numbers without .0
 bmiNumber = str(float(bmiNumber))
@@ -83,10 +99,45 @@ if bmiNumber not in ylist:
 
 
 if bmiUnderweight:
-    print('BMI value indicates underweight')
+    print('BMI value indicates the patient is within the underweight range')
 elif bmiNormal:
-    print('BMI is normal')
+    print('BMI value indicates the patient is within the normal range')
 elif bmiOverweight:
-    print('BMI indicates overweight')
+    print('BMI value indicates the patient is within the overweight range')
 elif bmiObese:
-    print('BMI value indicates obesity')
+    print('BMI value indicates the patient is within the obesity range')
+
+
+##BMI CALCULATIONS ARE DONE, NOW FOR KARVONEN FORMULA
+
+def karFormula(age, rhr, maxHeartVal):
+    ###maximum heart rate
+    mhr = 220 - int(age)
+    #print(mhr)
+    ###heart rate reserve
+    hrr = int(mhr) - int(rhr)
+    #print(hrr)
+    ###maximum target zone
+    mtz = int(hrr)*float(maxHeartVal)
+    #print('mtz is' + str(mtz))
+    lastval = float(mtz) + float(rhr)
+    #print(lastval)
+    return lastval
+    #target training zone
+    ##ttz = mtz + rhr
+
+
+
+print('Exercise Intensity Heart Rates: ')
+print('Intensity(%)' + '\tMax Heart Rate(BPM)')
+#Create allowed values for maximum intensity
+for i in range(50, 96, 5):
+    #print(str(maxHeartVal) + '%')
+    #output = karFormula(age, maxHeartVal)
+    #print(output)
+    i = float(i)
+    i = i / 100
+    result = karFormula(ageIn,rhrIn,i)
+    result = int(result)
+    print((str(int(i * 100)) + '%') + '\t\t' + str(result))
+   
