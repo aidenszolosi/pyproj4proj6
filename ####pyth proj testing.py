@@ -25,6 +25,8 @@ bmiNumber = round(bmiNumber, 1)
 bmiNumber = str(bmiNumber)
 print('BMI INDEX VALUE IS: ' + bmiNumber)
 
+#this fixes it not recognizing numbers without .0
+bmiNumber = str(float(bmiNumber))
 
 #create table of possible values
 xlist = []
@@ -46,7 +48,6 @@ for x in range(18, 26):
 
     if bmiNumber not in xlist:
         bmiNormal = False
-
 if float(bmiNumber) <= float(18.5):
     bmiUnderweight = True
 else:
@@ -62,26 +63,25 @@ else:
 ylist = []
 
 
-#BUG: #1 tuple appends 25 repeatedly instead of 25, then 26, 27 and so on 
+#BUG: Solved
 for y in range(25, 30):
-    y = round(x, 1)
-    ylist.insert(0, str(x) + str('.1'))
-    ylist.insert(1, str(x) + str('.2'))
-    ylist.insert(2, str(x) + str('.3'))
-    ylist.insert(3, str(x) + str('.4'))
-    ylist.insert(4, str(x) + str('.5'))
-    ylist.insert(5, str(x) + str('.6'))
-    ylist.insert(6, str(x) + str('.7'))
-    ylist.insert(7, str(x) + str('.8'))
-    ylist.insert(8, str(x) + str('.9'))
-    ylist.insert(0, str(x) + str('.0'))
+    ylist.insert(0, str(y) + str('.0'))
+    ylist.insert(1, str(y) + str('.1'))
+    ylist.insert(2, str(y) + str('.2'))
+    ylist.insert(3, str(y) + str('.3'))
+    ylist.insert(4, str(y) + str('.4'))
+    ylist.insert(5, str(y) + str('.5'))
+    ylist.insert(6, str(y) + str('.6'))
+    ylist.insert(7, str(y) + str('.7'))
+    ylist.insert(8, str(y) + str('.8'))
+    ylist.insert(9, str(y) + str('.9'))
 if bmiNumber in ylist: 
         bmiOverweight = True
 
 if bmiNumber not in ylist:
         bmiOverweight = False
 
-print(ylist)
+
 if bmiUnderweight:
     print('BMI value indicates underweight')
 elif bmiNormal:
