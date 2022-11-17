@@ -8,14 +8,14 @@ def lbtokg(lb):
 lbInput = input('\nWeight (pounds): ')
 weightKG = lbtokg(lbInput)
 weightKG = round(weightKG, 2)
-print(weightKG)
+
 
 def inchesToMeters(inches):
     return float(inches) * 0.0254 
 
 inch = input('\nHeight (inches): ')
 heightM = inchesToMeters(inch)
-print(heightM)
+
 
 def bmi(weight, height):
     return weight / (height * height)
@@ -40,13 +40,12 @@ for x in range(18, 26):
     xlist.insert(6, str(x) + str('.7'))
     xlist.insert(7, str(x) + str('.8'))
     xlist.insert(8, str(x) + str('.9'))
-    xlist.insert(0,str(x))
+    xlist.insert(0, str(x) + str('.0'))
     if bmiNumber in xlist: 
         bmiNormal = True
 
     if bmiNumber not in xlist:
         bmiNormal = False
-
 
 if float(bmiNumber) <= float(18.5):
     bmiUnderweight = True
@@ -82,12 +81,9 @@ for y in range(25, 30):
 
 if bmiUnderweight:
     print('BMI value indicates underweight')
-
-if bmiNormal:
+elif bmiNormal:
     print('BMI is normal')
-
-if bmiOverweight:
+elif bmiOverweight:
     print('BMI indicates overweight')
-
-if bmiObese:
+elif bmiObese:
     print('BMI value indicates overweight')
