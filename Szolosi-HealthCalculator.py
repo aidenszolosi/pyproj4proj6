@@ -121,7 +121,7 @@ bmiNumber = str(float(bmiNumber))
 ylist = []
 
 
-#BUG: BMI RANGE is printing normal when in ow range, #fixed hopefully
+
 for y in range(25, 30):
     ylist.insert(0, str(y) + str('.0'))
     ylist.insert(1, str(y) + str('.1'))
